@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="example" class="content-area">
+    <div>
+        <select id="dogBreed" class="select-element">
+            <option value="01" label="finnish" />
+            <option value="02" label="hound" />
+            <option value="03" label="mexicanhairless" />
+            <option value="04" label="shihtzu" />
+        </select>
+        <select id = "subBreed" class="select-element">
+            <option value="01" label="afghan" />
+            <option value="02" label="basset" />
+        </select>
+    </div>
+    <div>
+        <img id="dogTypeImg" src="img/dog1.jpg" class="img"/>
+        <img id="subTypeImg" src="img/dog2.jpg" class="img"/>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        getDogList();
+        getSubDogList();
+    })
+    function getDogList() {
+          /**请求狗品种的接口地址*/
+          let getDogUrl = '';
+          $.get(getDogUrl, function(data,status){
+              if(status === 'success'){
+                  let dogList = data.list
+                  for(var i=0;i<dogList;i++) {
+                      $("#dogType").html("");
+                      $("#dogType").append($("<option value=\"" + dogList[i].id + "\">" + dogList[i].name + "</option>"))
+                  }
+              }
+          })
+    }
+    function getSubDogList() {
+      alert('get sub dogList');
+    }
+
+
+</script>
+<style type="text/css">
+    .content-area {
+        width: 600px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 100px auto;
+    }
+    .select-element {
+        width: 200px;
+        height:30px;
+        margin-right: 20px;
+    }
+    .img {
+        margin-top:20px;
+        width: 200px;
+        height:200px;
+        margin-right: 20px;
+    }
+
+</style>
+</html>
