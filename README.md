@@ -4,6 +4,10 @@ This project was generated with express, nodejs, typescript
 # Development server
 Navigate to http://localhost:3001/. The app will automatically reload if you change any of the source files.
 
+# Run up
+cd ./app
+nodejs dogBreedServer.js
+
 # Interface
 ## /dogBreed    
 Method:Get
